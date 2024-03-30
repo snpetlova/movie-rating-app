@@ -9,8 +9,10 @@ export const mutationLogin = async () => {
         }
     );
 
-    console.log(res.json());
+    const data = await res.json();
 
-    return res.json();
+    console.log(data);
+
+    return data;
     
 }
