@@ -1,6 +1,6 @@
 # Movie Rating App
 
-This is a movie rating web application built using React and TypeScript. It allows users to rate and review movies.
+This is a movie rating web application built using React and TypeScript with Vite. It allows users to rate and review movies.
 
 ## Features
 
@@ -18,6 +18,7 @@ This is a movie rating web application built using React and TypeScript. It allo
 - React Router DOM
 - react-query by TanStack
 - react-toastify
+- Vite
 
 ## The Movie Database (TMDb) API
 
@@ -61,7 +62,7 @@ Replace YOUR_API_KEY with your API key for accessing movie data.
 3.Run the application:
 npm run dev
 # or
-yarn run dev
+yarn dev
 
 The application should be running at `http://localhost:5173`.
 
