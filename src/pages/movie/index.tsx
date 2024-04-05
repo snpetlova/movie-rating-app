@@ -26,7 +26,7 @@ export const Movie = () => {
   return (
     <div style={{ marginTop: 50 }}>
       <Segment>
-        <Header> {data.title} </Header>
+        <Header size='huge'> {data.title} </Header>
         <Grid columns={2} divided textAlign="left" style={{ marginTop: 20 }}>
           <Grid.Row>
             <Grid.Column width={6}>

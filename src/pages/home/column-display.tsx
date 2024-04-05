@@ -1,11 +1,11 @@
-import {Card, Grid, Form, Label} from "semantic-ui-react";
+import { Card, Grid, Form, Label } from "semantic-ui-react";
 import { DisplayType } from ".";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { rateMovie, rateTvShow } from "./mutation";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface DisplayData {
   id: number;
@@ -30,27 +30,32 @@ export const ColumnDisplay = (props: Props) => {
 
   const onSuccess = () => {
     toast.success("Succesfully rated!");
-  }
+  };
 
   const onError = () => {
-    toast.error("Something went wrong!")
-  }
+    toast.error("Something went wrong!");
+  };
 
-  const {mutate: rateMovieMutation} = useMutation({
+  const { mutate: rateMovieMutation } = useMutation({
     mutationKey: ["rateMovie"],
     mutationFn: (id: number) => rateMovie(id, rating),
     onSuccess,
     onError,
   });
 
-  const {mutate: rateTvShowMutation} = useMutation({
+  const { mutate: rateTvShowMutation } = useMutation({
     mutationKey: ["rateTvShow"],
     mutationFn: (id: number) => rateTvShow(id, rating),
     onSuccess,
     onError,
   });
 
-  const rate = displayType === DisplayType.Movies ? rateMovieMutation : rateTvShowMutation;
+  const rate =
+    displayType === DisplayType.Movies ? rateMovieMutation : rateTvShowMutation;
+
+  if (!data || data.length === 0) {
+    return <div>No data available</div>;
+  }
 
   return (
     <Grid columns={3} stackable centered verticalAlign="top" padded>
@@ -63,7 +68,7 @@ export const ColumnDisplay = (props: Props) => {
               }/${displayData.id}`}
             >
               <Card
-              style={{height: 820}}
+                style={{ height: 820 }}
                 fluid
                 image={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`}
                 header={
@@ -74,28 +79,32 @@ export const ColumnDisplay = (props: Props) => {
                 meta={`Release Date: ${displayData.release_date} | Rating: ${displayData.vote_average}`}
                 description={displayData.overview.slice(0, 350) + "..."}
               />
-              {isRated && <Label color="green"> Your rating: {displayData.rating} </Label>}
+              {isRated && (
+                <Label color="green"> Your rating: {displayData.rating} </Label>
+              )}
             </Link>
-            <Form style={{ marginTop: 10 }}>
-              <Form.Group inline>
-                <Form.Field>
-                  <Form.Input
-                    type="number"
-                    min="0"
-                    max="10"
-                    step="0.5"
-                    onChange={(e) => setRating(Number(e.target.value))}
-                    action={{
+            {!isRated && (
+              <Form style={{ marginTop: 10 }}>
+                <Form.Group inline>
+                  <Form.Field>
+                    <Form.Input
+                      type="number"
+                      min="0"
+                      max="10"
+                      step="0.5"
+                      onChange={(e) => setRating(Number(e.target.value))}
+                      action={{
                         color: "violet",
                         labelPosition: "right",
                         icon: "star",
                         content: "Rate",
-                        onClick: () => rate(displayData.id)
-                    }}
-                  />
-                </Form.Field>
-              </Form.Group>
-            </Form>
+                        onClick: () => rate(displayData.id),
+                      }}
+                    />
+                  </Form.Field>
+                </Form.Group>
+              </Form>
+            )}
           </Card.Group>
         </Grid.Column>
       ))}

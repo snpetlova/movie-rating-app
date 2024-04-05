@@ -50,7 +50,7 @@ export const TvShow = () => {
   return (
     <div style={{ marginTop: 50 }}>
       <Segment>
-        <Header> {data.name} </Header>
+        <Header size='huge'> {data.name} </Header>
         <Grid columns={2} divided textAlign="left" style={{ marginTop: 20 }}>
           <Grid.Row>
             <Grid.Column width={6}>
