@@ -65,5 +65,13 @@ The application should be running at `http://localhost:5173`.
 
 This project was developed following the tutorial from YouTube. Credits to PedroTech for the helpful guidance and instructions provided in the tutorial.
 
+## Website
+
+You can also visit it [here](https://rateyourfavourites.netlify.app/).
+
+### Troubleshooting
+
+If you encounter any issues with the website or have questions about deployment, please don't hesitate to [contact me](snpetlova@gmail.com).
+
 
 
