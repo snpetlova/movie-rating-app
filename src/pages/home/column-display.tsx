@@ -63,6 +63,7 @@ export const ColumnDisplay = (props: Props) => {
               }/${displayData.id}`}
             >
               <Card
+              style={{height: 820}}
                 fluid
                 image={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`}
                 header={
@@ -73,7 +74,7 @@ export const ColumnDisplay = (props: Props) => {
                 meta={`Release Date: ${displayData.release_date} | Rating: ${displayData.vote_average}`}
                 description={displayData.overview.slice(0, 350) + "..."}
               />
-              {isRated && <Label> Your rating: {displayData.rating} </Label>}
+              {isRated && <Label color="green"> Your rating: {displayData.rating} </Label>}
             </Link>
             <Form style={{ marginTop: 10 }}>
               <Form.Group inline>
