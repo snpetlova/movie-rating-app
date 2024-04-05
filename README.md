@@ -48,7 +48,7 @@ VITE_API_KEY==YOUR_TMDB_API_KEY
 
 3. Install dependencies:
    npm install
-   # or
+   #### or
    yarn install
 
 ### Configuration
@@ -61,7 +61,7 @@ Replace YOUR_API_KEY with your API key for accessing movie data.
 
 3.Run the application:
 npm run dev
-# or
+#### or
 yarn dev
 
 The application should be running at `http://localhost:5173`.
