@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import {
   Grid,
   Header,
@@ -42,6 +42,10 @@ export const TvShow = () => {
       ),
     },
   }));
+
+  if (localStorage.getItem("guest_session_id") === null) {
+    return <Navigate to="/auth" />
+  }
 
   return (
     <div style={{ marginTop: 50 }}>

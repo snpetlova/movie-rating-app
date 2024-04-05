@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { useParams } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
 import { Grid, Header, Loader, Segment, Image, List, Label } from "semantic-ui-react";
 import { fetchMovieDetails } from "./query";
 
@@ -17,6 +17,10 @@ export const Movie = () => {
 
   if (isLoading) {
     return <Loader active />;
+  }
+
+  if (localStorage.getItem("guest_session_id") === null) {
+    return <Navigate to="/auth" />
   }
 
   return (
